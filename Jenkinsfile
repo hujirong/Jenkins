@@ -10,7 +10,7 @@ pipeline {
 		  script {                   
                         checkout scm
                         def allChangeResults = getAllChangeResults()
-                        println "AllChangeResults are: $allChangeResults"
+                        println "AllChangeResults are:\n $allChangeResults"
 			def allChangeFiles = getAllChangeFiles()
 		  }
             }
