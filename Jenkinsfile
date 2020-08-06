@@ -1,6 +1,6 @@
 // -*- mode: groovy -*-
 // vim: set filetype=groovy :
-pipelie{
+pipeline{
 node( 'master' ) {
   stage( "Phase 1" ) {
     sshagent( credentials: [ 'hujirong' ] ) {
