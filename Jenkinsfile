@@ -1,5 +1,5 @@
 pipeline {
-    node ('master') {
+    
         stages {
             stage("checkout") {
                 git url: 'https://github.com/hujirong/Jenkins.git'
@@ -19,5 +19,5 @@ pipeline {
               }
             }
         }
-    }
+    
 }
