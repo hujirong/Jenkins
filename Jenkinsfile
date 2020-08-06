@@ -10,7 +10,7 @@ pipeline {
         stage("last-changes") {
             steps {
                 script {
-                    sshagent( credentials: [ 'hujirong' ] ) {
+                    
                         checkout scm
                         def lastSuccessfulCommit = getLastSuccessfulCommit()
                         def currentCommit = commitHashForBuild( currentBuild.rawBuild )
@@ -21,7 +21,7 @@ pipeline {
                                 ).split('\n')
                             println "Commits are: $commits"
                         }
-                    }
+                    
                 }
             }
         }
