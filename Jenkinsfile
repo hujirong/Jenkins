@@ -1,6 +1,6 @@
 pipeline {
     agent any
-    
+    node( 'master' ) {
     stage( "Phase 1" ) {
     sshagent( credentials: [ 'hujirong' ] ) {
       checkout scm
@@ -15,7 +15,7 @@ pipeline {
       }
     }
   }
-
+  }
 
 def getLastSuccessfulCommit() {
   def lastSuccessfulHash = null
