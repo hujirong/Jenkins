@@ -20,11 +20,12 @@ pipeline {
     }
 }
 
+//https://stackoverflow.com/questions/50437626/how-to-get-list-of-all-modified-files-in-pipeline-jenkins
 @NonCPS
 def getAllChangeFiles() {
 	def changeLogSets = currentBuild.changeSets
 	def total = changeLogSets.size()
-	println "AllChangeFiles: ${total}"
+	println "Total Number of AllChangeFiles: ${total}"
 	for (int i = 0; i < changeLogSets.size(); i++) {
     		def entries = changeLogSets[i].items
     		for (int j = 0; j < entries.length; j++) {
@@ -39,6 +40,7 @@ def getAllChangeFiles() {
 	}
 }
 
+// https://gist.github.com/ftclausen/8c46195ee56e48e4d01cbfab19c41fc0
 @NonCPS
 def getAllChangeResults() {
 	def result = getChangeStringForBuild(currentBuild)
