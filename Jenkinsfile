@@ -23,7 +23,8 @@ pipeline {
 @NonCPS
 def getAllChangeFiles() {
 	def changeLogSets = currentBuild.changeSets
-	println "AllChangeFiles: changeLogSets.size()"
+	def total = changeLogSets.size()
+	println "AllChangeFiles: ${total}"
 	for (int i = 0; i < changeLogSets.size(); i++) {
     		def entries = changeLogSets[i].items
     		for (int j = 0; j < entries.length; j++) {
