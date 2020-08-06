@@ -19,6 +19,7 @@ pipeline {
             }
         }
     }
+}
 
 @NonCPS
 def getAllChangeResults() {
@@ -61,6 +62,4 @@ def getChangeStringForBuild(build) {
     }
 
     return "${changeString}"
-}
-
 }
