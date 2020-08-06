@@ -9,13 +9,13 @@ pipeline {
 
         stage("last-changes") {
             steps {
-                               
+		  script {                   
                         checkout scm
                         def allChangeResults = getAllChangeResults()
                         println "AllChangeResults are: $allChangeResults"
                         def changeStringForBuild = getChangeStringForBuild()
                         println "changeStringForBuild are: $changeStringForBuild"                    
-                
+		  }
             }
         }
     }
