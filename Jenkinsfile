@@ -6,27 +6,20 @@ pipeline {
     }
     
     stages {
-        stage("checkout") {
-            steps {
-                script {
-                    git url: 'https://github.com/hujirong/Jenkins.git'
-                }
-            }
-        }
 
         stage("last-changes") {
             steps {
                 script {
-                    def publisher = LastChanges.getLastChangesPublisher "LAST_SUCCESSFUL_BUILD", "SIDE", "LINE", true, true, "", "", "", "", ""
-                    publisher.publishLastChanges()
-                    def changes = publisher.getLastChanges()
-                    println(changes.getEscapedDiff())
-                    for (commit in changes.getCommits()) {
-                        println(commit)
-                        def commitInfo = commit.getCommitInfo()
-                        println(commitInfo)
-                        println(commitInfo.getCommitMessage())
-                        println(commit.getChanges())
+                    sshagent( credentials: [ 'hujirong' ] ) {
+                    checkout scm
+                    def lastSuccessfulCommit = getLastSuccessfulCommit()
+                    def currentCommit = commitHashForBuild( currentBuild.rawBuild )
+                    if (lastSuccessfulCommit) {
+                        commits = sh(
+                            script: "git rev-list $currentCommit \"^$lastSuccessfulCommit\"",
+                            returnStdout: true
+                            ).split('\n')
+                        println "Commits are: $commits"
                     }
                 }
             }
