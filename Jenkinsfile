@@ -1,6 +1,6 @@
 pipeline {
     agent any
-    node( 'master' ) {
+    stages {
     stage( "Phase 1" ) {
     sshagent( credentials: [ 'hujirong' ] ) {
       checkout scm
