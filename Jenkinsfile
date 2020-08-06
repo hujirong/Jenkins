@@ -17,7 +17,7 @@ node( 'master' ) {
     }
   }
 }
-
+}
 def getLastSuccessfulCommit() {
   def lastSuccessfulHash = null
   def lastSuccessfulBuild = currentBuild.rawBuild.getPreviousSuccessfulBuild()
@@ -34,5 +34,4 @@ def getLastSuccessfulCommit() {
 def commitHashForBuild( build ) {
   def scmAction = build?.actions.find { action -> action instanceof jenkins.scm.api.SCMRevisionAction }
   return scmAction?.revision?.hash
-}
 }
