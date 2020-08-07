@@ -1,10 +1,6 @@
-pipeline {
-    agent {
-        node {
-            label 'master'
-        }
-    }    
-    stages {
+node {
+    
+
         stage("last-changes") {
             steps {
 		  script {                   
@@ -15,7 +11,7 @@ pipeline {
 		  }
             }
         }
-    }
+   
 }
 
 //https://stackoverflow.com/questions/50437626/how-to-get-list-of-all-modified-files-in-pipeline-jenkins
