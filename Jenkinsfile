@@ -2,14 +2,12 @@ node {
     
 
         stage("last-changes") {
-            steps {
-		  script {                   
+                          
                         checkout scm
                         def allChangeResults = getAllChangeResults()
                         println "AllChangeResults are:\n $allChangeResults"
 			def allChangeFiles = getAllChangeFiles()
-		  }
-            }
+	
         }
    
 }
